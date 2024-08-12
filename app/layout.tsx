@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mulish.className} no-scrollbar`}>{children}</body>
+      <body className={`${mulish.className} no-scrollbar max-h-[100vh]`}>{children}</body>
     </html>
   );
 }
