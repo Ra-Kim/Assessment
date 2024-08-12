@@ -7,11 +7,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import SubSidebarItem from "./subSideBarItem";
 
 const Sidebar = () => {
   return (
-    <div className="px-8 pt-8 pb-4 border-r border-r-[#F1F5F9] grid grid-rows-[80px_1fr] h-[100dvh]">
-      <Image src={`/assets/Logo.png`} alt="logo" width={80} height={28} />
+    <div className="pt-8 pb-4 border-r border-r-[#F1F5F9] grid grid-rows-[5rem_1fr] h-[100dvh] bg-white">
+      <div className="px-8">
+        <Image src={`/assets/Logo.png`} alt="logo" width={80} height={28} />
+      </div>
       <div className="flex flex-col justify-between overflow-y-scroll no-scrollbar">
         <ul>
           <li>
@@ -32,13 +35,25 @@ const Sidebar = () => {
                       width={24}
                       height={24}
                     />
-                    <p>Invoice</p>
+                    <p className="font-normal">Invoice</p>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p>Purchase Order</p>
-                  <p>Invoice history</p>
-                  <p>Estimates</p>
+                  <SubSidebarItem
+                    name={"Purchase Order"}
+                    link={"/dashboard/purchaseOrders"}
+                    tip={25}
+                  />
+                  <SubSidebarItem
+                    name={"Invoice history"}
+                    link={"/dashboard/invoices"}
+                    tip={93}
+                  />
+                  <SubSidebarItem
+                    name={"Estimates"}
+                    link={"/dashboard/estimates"}
+                    tip={126}
+                  />
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -54,15 +69,30 @@ const Sidebar = () => {
                       width={24}
                       height={24}
                     />
-                    <p>Human Resource</p>
+                    <p className="font-normal">Human Resource</p>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p>Onboarding</p>
-                  <p>Performance Management</p>
-                  <p>Leave Management</p>
-                  <p>Attendance Management</p>
-                  <p>Payroll</p>
+                  <SubSidebarItem
+                    name={"Onboarding"}
+                    link={"/dashboard/onboarding"}
+                  />
+                  <SubSidebarItem
+                    name={"Invoice history"}
+                    link={"/dashboard/performanceManagement"}
+                  />
+                  <SubSidebarItem
+                    name={"Leave Mangement"}
+                    link={"/dashboard/leaveManagement"}
+                  />
+                  <SubSidebarItem
+                    name={"Attendance Mangement"}
+                    link={"/dashboard/attendanceManagement"}
+                  />
+                  <SubSidebarItem
+                    name={"Payroll"}
+                    link={"/dashboard/payroll"}
+                  />
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

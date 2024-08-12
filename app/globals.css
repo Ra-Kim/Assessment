@@ -76,6 +76,12 @@
     /* scrollbar-width: none; Firefox */
   }
   .sidebar-hover-state {
-    @apply px-0 hover:px-4 duration-150 ease-in-out hover:bg-[#F1F5F9] mx-auto min-h-[3.5rem] items-center rounded text-[#475569]
+    @apply px-0 hover:px-4 duration-150 ease-in-out hover:bg-[#F1F5F9] mx-8 min-h-[3.5rem] items-center rounded text-[#475569] font-normal
+  }
+  .sub-sidebar-hover-state {
+    @apply px-0 hover:px-4 duration-150 ease-in-out hover:bg-[#F1F5F9] mx-8 min-h-[2.5rem] items-center rounded text-[#475569]
+  }
+  .sub-sidebar-active-state {
+    @apply px-8 bg-[#2563EB] mx-0 min-h-[2.5rem] items-center rounded-l-[56px] text-[#FFF]
   }
 }
