@@ -5,7 +5,7 @@ import React from "react";
 
 const Dashbord = () => {
   return (
-    <div className="grid grid-rows-[5rem_1fr]">
+    <div className="grid grid-rows-[5rem_1fr] h-full">
       <Header title="Invoice" />
       <form className="grid grid-rows-[1fr_6rem]">
         <div className="grid grid-cols-[1fr_17.5rem]">

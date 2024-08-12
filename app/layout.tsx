@@ -3,7 +3,7 @@ import { Inter, Mulish } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const mulish = Mulish({ subsets: ["latin"]})
+const mulish = Mulish({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Test Assessment",
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mulish.className}>{children}</body>
+      <body className={`${mulish.className} no-scrollbar`}>{children}</body>
     </html>
   );
 }

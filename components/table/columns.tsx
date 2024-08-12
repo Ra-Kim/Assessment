@@ -3,7 +3,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import { purchaseOrderData } from "@/lib/constants";
-import { Columns3, Ellipsis } from "lucide-react";
+import { Columns3, Dot, Ellipsis } from "lucide-react";
 
 export const purchaseOrderColumns: ColumnDef<
   (typeof purchaseOrderData.purchase_orders)[0]
@@ -70,7 +70,8 @@ export const purchaseOrderColumns: ColumnDef<
     header: "Status",
     accessorKey: "status",
     cell: ({ row }) => {
-      return <div>{row.original.status}</div>;
+      const status = row.original.status;
+      return <Status status={status} />;
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
@@ -79,10 +80,33 @@ export const purchaseOrderColumns: ColumnDef<
   {
     id: "actions",
     header: ({ table }) => {
-      return <Columns3 className="mt-2"/>;
+      return <Columns3 className="mt-2" />;
     },
     cell: () => {
       return <Ellipsis />;
     },
   },
 ];
+
+const Status = ({status}:{status:string}) => {
+  return (
+    <div
+    className={`flex items-center gap-1 text-sm font-bold rounded-sm px-[0.5px] justify-center ${
+      status === "Draft"
+        ? "text-[#475569] bg-[#F8FAFC]"
+        : status === "Pending"
+        ? "text-[#D97706] bg-[#FFFBEB]"
+        : status === "Issued"
+        ? "text-primary bg-[#EFF6FF]"
+        : status === "Delivered"
+        ? "text-[#059669] bg-[#ECFDF5]"
+        : status === "Closed"
+        ? "text-[#475569] bg-[#F8FAFC]"
+        : "text-[#059669] bg-[#ECFDF5]"
+    }`}
+  >
+    <Dot size={32}/>
+    <p>{status}</p>
+  </div>
+  )
+}

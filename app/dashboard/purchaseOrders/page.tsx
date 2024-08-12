@@ -7,7 +7,7 @@ import { Plus } from "lucide-react";
 
 const PurchaseOrders = () => {
   return (
-    <div className="grid grid-rows-[5rem_1fr] ml-4">
+    <div className="grid grid-rows-[5rem_1fr] ml-4 h-full ">
       <Header title="Invoice" />
       <div>
         <div className="px-4 pr-10 mt-6 mb-8 flex justify-between">
