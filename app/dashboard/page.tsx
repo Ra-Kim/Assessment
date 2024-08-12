@@ -1,7 +1,8 @@
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, RefreshCcw } from "lucide-react";
+import { CheckCircle2, RefreshCcw, ChevronRight } from "lucide-react";
 import React from "react";
+import Image from "next/image";
 
 const Dashbord = () => {
   return (
@@ -9,7 +10,25 @@ const Dashbord = () => {
       <Header title="Invoice" />
       <form className="grid grid-rows-[1fr_6rem]">
         <div className="grid grid-cols-[1fr_17.5rem]">
-          <div></div>
+          <div className="p-[1.5rem] pl-[2.5rem]">
+            <div className="flex gap-2 items-center text-sm font-semibold">
+              <div className="flex gap-1 items-center text-primary">
+                <Image
+                  src={`/assets/svgs/blueInvoice.svg`}
+                  alt=""
+                  width={24}
+                  height={24}
+                />
+                <p>Invoice</p>
+              </div>
+              <ChevronRight size={20} className="text-[#64748B]" />
+              <div>New Service Invoice</div>
+            </div>
+            <div className="mt-8">
+              <p className="text-2xl font-semibold">Invoice Details</p>
+              <p className="text-sm text-[#475569] my-2">Enter the invoice details below to start creating your invoice</p>
+            </div>
+          </div>
           <div className="bg-white border-t border-t-[#F1F5F9] border-l border-l-[#F1F5F9] p-6">
             <p className="text-[#0F172A] font-semibold tracking-[0.15px]">
               Create New Service Invoice
