@@ -1,6 +1,7 @@
 "use client";
 import Header from "@/components/header";
 import { format } from "date-fns";
+import dayjs from "dayjs"
 import {
   CheckCircle2,
   RefreshCcw,
@@ -78,7 +79,7 @@ const Dashbord = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     defaultValues: {
       invoiceNumber: "INV-000001",
-      invoiceDate: "",
+      invoiceDate: dayjs().toISOString().slice(0,10),
       invoiceTitle: "",
       invoiceDescription: "",
       invoiceDue: "",
@@ -142,11 +143,15 @@ const Dashbord = () => {
                     name="invoiceDate"
                     render={({ field }) => (
                       <FormItem>
-                        <FloatingLabelInput
-                          {...field}
-                          id="invoiceDate"
-                          label="Invoice Date"
-                        />
+                        <div className="relative">
+                          <FloatingLabelInput
+                            {...field}
+                            id="invoiceDate"
+                            label="Invoice Date"
+                            disabled
+                          />
+                          <CalendarIcon size={16} className="absolute right-2 top-3 font-bold h-4 w-4 opacity-50"/>
+                        </div>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -184,13 +189,13 @@ const Dashbord = () => {
                     )}
                   />
                 </div>
-                <div className="mt-4 grid grid-cols-[60%_1fr] gap-4 align-bottom">
+                <div className="mt-4 grid grid-cols-[60%_40%] gap-2 align-bottom">
                   <FormField
                     control={form.control}
                     name="invoiceDue"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Invoice Due</FormLabel>
+                      <FormItem className="relative">
+                        <FormLabel className="bg-[#F8FAFC] absolute start-2 top-[2px] z-10 px-2 text-[11px]">Invoice Due</FormLabel>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
@@ -216,10 +221,10 @@ const Dashbord = () => {
                     control={form.control}
                     name="dueDate"
                     render={({ field }) => (
-                      <FormItem className="">
-                        <FormLabel>Due Date</FormLabel>
+                      <FormItem className="relative">
+                        <FormLabel className="bg-[#F8FAFC] absolute start-2 top-[2px] z-10 px-2 text-[11px]">Due Date</FormLabel>
                         <Popover>
-                          <PopoverTrigger className="bg-transparent" asChild>
+                          <PopoverTrigger className="bg-transparent max-w-full" asChild>
                             <FormControl>
                               <Button
                                 variant={"outline"}
