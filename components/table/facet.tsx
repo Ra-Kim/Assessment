@@ -18,7 +18,6 @@ import {
   List,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 
@@ -73,13 +72,7 @@ export function DataTableFacetedFilter<TData, TValue>({
   let selectedValues = useMemo(() => {
     return new Set(column?.getFilterValue() as string[]);
   }, [column]);
-  const params = useSearchParams();
-  const filterValue = params.get("filter") || "";
-  useEffect(() => {
-    if (filterValue) {
-      column?.setFilterValue(Array.from(selectedValues));
-    }
-  }, [filterValue, column, selectedValues]);
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -132,9 +125,7 @@ export function DataTableFacetedFilter<TData, TValue>({
         <Input placeholder={title} name="status" />
         <DropdownMenuGroup>
           {options.map((option) => {
-            if (filterValue) {
-              selectedValues = new Set([filterValue]);
-            }
+            
             const isSelected = selectedValues.has(option);
             return (
               <DropdownMenuItem
